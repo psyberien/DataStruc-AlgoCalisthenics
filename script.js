@@ -6,11 +6,11 @@ console.log("hisashiburi dana")
 // returns true when passed as parameter to the callback 
 // function
 
-let allAreLessThanSeven = all([1, 2, 8], function(num) {
+let lessThanSeven = all([1, 2, 8 ], function(num) {
     return num < 7;
-});
-console.log(allAreLessThanSeven);
-function all(arr, callback){
+})
+
+function all(arr, callback) {
     if(arr.length === 0) return true;
     const copy = arr.slice();
 
@@ -21,11 +21,14 @@ function all(arr, callback){
     return false;
 }
 
+console.log(lessThanSeven);
+
 // Question 2: Product of an array
 // Write a function called productOfArray which takes in 
 // an array of numbers and returns the product of them all
 // let six = productOfArray([1,2,3]) // 6
 // let sixty = productOfArray([1,2,3,10]) // 60
+
 let six = productOfArray([1,2,3]) // 6
 let sixty = productOfArray([1,2,3,10]) // 60
 console.log(six, sixty);
@@ -34,7 +37,6 @@ function productOfArray(arr) {
     if(arr.length === 0) return 1;
     return arr.shift() * productOfArray(arr);
 }
-
 
 // Question 3: Search JS object
 // Write a function called contains that searches for a 
@@ -59,15 +61,15 @@ let nestedObject = {
 // let doesntHaveIt = contains(nestedObject, "foo"); // false
 let hasIt = contains(nestedObject, 44); // true
 let doesntHaveIt = contains(nestedObject, "foo"); // false
-
 console.log(hasIt, doesntHaveIt);
+
 function contains(object, searchValue) {
     if(typeof object !== "object" || object === null) {
         return object === searchValue;
     }
-
+    
     for(const value of Object.values(object)) {
-        if(contains(value ,searchValue)) {
+        if(contains(value, searchValue)) {
             return true;
         }
     }
@@ -76,25 +78,26 @@ function contains(object, searchValue) {
 
 
 
+
 // Question 4: Parse a multi-dimensional array
 // Given a multi-dimensional integer array, return the 
 // total number of integers stored inside this array
 // let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
+
 let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
 console.log(seven);
 
 function totalIntegers(arr) {
-    if(arr.length === 0) return 0;
-    let total = 0;
-    let first = arr.shift();
+    if(arr.length === 0) return 0
+        let total = 0;
+        let first = arr.shift();
 
-    if(Array.isArray(first)){
-        total+= totalIntegers(first);
-    } else if(Number.isInteger(first)) {
-        total+= 1;
-    }
-
-    return total + totalIntegers(arr);
+        if(Array.isArray(first)) {
+            total += totalIntegers(first);
+        } else if (Number.isInteger(first)) {
+            total += 1;
+        }
+        return total + totalIntegers(arr);
 }
 
  // Question 5:
@@ -110,7 +113,7 @@ console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
 console.log(SumSquares([10,[[10],10],[10]])); // 400
 
 function SumSquares(arr) {
-    if(arr.length === 0 ) return 0;
+    if(arr.length === 0) return 0;
     let total = 0;
 
     for(let i=0; i<arr.length; i++) {
@@ -122,8 +125,6 @@ function SumSquares(arr) {
     }
     return total;
 }
-
-
 
 // Question 6:
 // The function should return an array containing 
