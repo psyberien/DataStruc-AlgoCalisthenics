@@ -6,10 +6,11 @@ console.log("hisashiburi dana")
 // returns true when passed as parameter to the callback 
 // function
 
-let lessThanSeven = all([1, 2, 8 ], function(num) {
+const allAreLessThanSeven = all([1, 62, 3], function(num) {
     return num < 7;
 })
 
+console.log(allAreLessThanSeven);
 function all(arr, callback) {
     if(arr.length === 0) return true;
     const copy = arr.slice();
@@ -21,22 +22,19 @@ function all(arr, callback) {
     return false;
 }
 
-console.log(lessThanSeven);
-
 // Question 2: Product of an array
 // Write a function called productOfArray which takes in 
 // an array of numbers and returns the product of them all
 // let six = productOfArray([1,2,3]) // 6
 // let sixty = productOfArray([1,2,3,10]) // 60
-
 let six = productOfArray([1,2,3]) // 6
 let sixty = productOfArray([1,2,3,10]) // 60
 console.log(six, sixty);
-
-function productOfArray(arr) {
+function productOfArray(arr){
     if(arr.length === 0) return 1;
     return arr.shift() * productOfArray(arr);
 }
+
 
 // Question 3: Search JS object
 // Write a function called contains that searches for a 
@@ -67,7 +65,7 @@ function contains(object, searchValue) {
     if(typeof object !== "object" || object === null) {
         return object === searchValue;
     }
-    
+
     for(const value of Object.values(object)) {
         if(contains(value, searchValue)) {
             return true;
@@ -75,8 +73,6 @@ function contains(object, searchValue) {
     }
     return false;
 }
-
-
 
 
 // Question 4: Parse a multi-dimensional array
@@ -88,16 +84,18 @@ let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
 console.log(seven);
 
 function totalIntegers(arr) {
-    if(arr.length === 0) return 0
-        let total = 0;
-        let first = arr.shift();
+    if(arr.length === 0) return 0;
 
-        if(Array.isArray(first)) {
-            total += totalIntegers(first);
-        } else if (Number.isInteger(first)) {
-            total += 1;
-        }
-        return total + totalIntegers(arr);
+    let total = 0;
+    let first = arr.shift();
+
+    if(Array.isArray(first)) {
+        total+= totalIntegers(first);
+    } else if(Number.isInteger(first)) {
+        total += 1;
+    }
+
+    return total + totalIntegers(arr);
 }
 
  // Question 5:
@@ -107,6 +105,7 @@ function totalIntegers(arr) {
 // console.log(SumSquares([[1,2],3])); // 14
 // console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
 // console.log(SumSquares([10,[[10],10],[10]])); // 400
+
 console.log(SumSquares([1,2,3])); // 14 
 console.log(SumSquares([[1,2],3])); // 14
 console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
@@ -118,14 +117,13 @@ function SumSquares(arr) {
 
     for(let i=0; i<arr.length; i++) {
         if(Array.isArray(arr[i])) {
-            total += SumSquares(arr[i]);
+            total+= SumSquares(arr[i]);
         } else {
             total += arr[i] * arr[i];
         }
     }
     return total;
 }
-
 // Question 6:
 // The function should return an array containing 
 // repetitions of the number argument. For instance, 
@@ -142,5 +140,5 @@ console.log(replicate(-2, 6)) // []
 function replicate(times, number) {
     if(times <= 0) return [];
 
-    return [number].concat(replicate(times - 1, number));
+    return [number].concat(replicate(times -1, number));
 }
