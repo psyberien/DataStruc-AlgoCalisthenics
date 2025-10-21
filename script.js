@@ -5,13 +5,12 @@ console.log("hisashiburi dana")
 // a callback and returns true if every value in the array 
 // returns true when passed as parameter to the callback 
 // function
-
-const allAreLessThanSeven = all([1, 62, 3], function(num) {
+const allAreLessThanSeven = all([1, 5, 3], function(num) {
     return num < 7;
-})
-
+});
 console.log(allAreLessThanSeven);
-function all(arr, callback) {
+
+function all(arr, callback){
     if(arr.length === 0) return true;
     const copy = arr.slice();
 
@@ -30,7 +29,7 @@ function all(arr, callback) {
 let six = productOfArray([1,2,3]) // 6
 let sixty = productOfArray([1,2,3,10]) // 60
 console.log(six, sixty);
-function productOfArray(arr){
+function productOfArray(arr) {
     if(arr.length === 0) return 1;
     return arr.shift() * productOfArray(arr);
 }
@@ -66,7 +65,7 @@ function contains(object, searchValue) {
         return object === searchValue;
     }
 
-    for(const value of Object.values(object)) {
+    for(const value of Object.values(object)){
         if(contains(value, searchValue)) {
             return true;
         }
@@ -79,13 +78,11 @@ function contains(object, searchValue) {
 // Given a multi-dimensional integer array, return the 
 // total number of integers stored inside this array
 // let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
-
 let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
 console.log(seven);
 
 function totalIntegers(arr) {
     if(arr.length === 0) return 0;
-
     let total = 0;
     let first = arr.shift();
 
@@ -94,7 +91,6 @@ function totalIntegers(arr) {
     } else if(Number.isInteger(first)) {
         total += 1;
     }
-
     return total + totalIntegers(arr);
 }
 
@@ -110,7 +106,6 @@ console.log(SumSquares([1,2,3])); // 14
 console.log(SumSquares([[1,2],3])); // 14
 console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
 console.log(SumSquares([10,[[10],10],[10]])); // 400
-
 function SumSquares(arr) {
     if(arr.length === 0) return 0;
     let total = 0;
@@ -124,6 +119,7 @@ function SumSquares(arr) {
     }
     return total;
 }
+
 // Question 6:
 // The function should return an array containing 
 // repetitions of the number argument. For instance, 
@@ -136,9 +132,9 @@ function SumSquares(arr) {
 console.log(replicate(3, 5)) // [5, 5, 5]
 console.log(replicate(1, 69)) // [69]
 console.log(replicate(-2, 6)) // []
-
 function replicate(times, number) {
     if(times <= 0) return [];
 
     return [number].concat(replicate(times -1, number));
 }
+
