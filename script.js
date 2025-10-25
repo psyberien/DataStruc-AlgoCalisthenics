@@ -5,16 +5,16 @@ console.log("hisashiburi dana")
 // a callback and returns true if every value in the array 
 // returns true when passed as parameter to the callback 
 // function
-const allAreLessThanSeven = all([1, 5, 3], function(num) {
+const lessThanSeven = all([1, 8, 3], function(num) {
     return num < 7;
 });
-console.log(allAreLessThanSeven);
+console.log(lessThanSeven);
 
-function all(arr, callback){
+function all(arr, callback) {
     if(arr.length === 0) return true;
     const copy = arr.slice();
 
-    if(callback(copy[0])){
+    if(callback(copy[0])) {
         copy.shift();
         return all(copy, callback);
     }
@@ -29,9 +29,10 @@ function all(arr, callback){
 let six = productOfArray([1,2,3]) // 6
 let sixty = productOfArray([1,2,3,10]) // 60
 console.log(six, sixty);
+
 function productOfArray(arr) {
     if(arr.length === 0) return 1;
-    return arr.shift() * productOfArray(arr);
+    return arr.shift() *productOfArray(arr);
 }
 
 
@@ -59,18 +60,17 @@ let nestedObject = {
 let hasIt = contains(nestedObject, 44); // true
 let doesntHaveIt = contains(nestedObject, "foo"); // false
 console.log(hasIt, doesntHaveIt);
-
 function contains(object, searchValue) {
     if(typeof object !== "object" || object === null) {
         return object === searchValue;
     }
 
-    for(const value of Object.values(object)){
+    for(const value of Object.values(object)) {
         if(contains(value, searchValue)) {
             return true;
         }
     }
-    return false;
+    return false
 }
 
 
@@ -101,11 +101,11 @@ function totalIntegers(arr) {
 // console.log(SumSquares([[1,2],3])); // 14
 // console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
 // console.log(SumSquares([10,[[10],10],[10]])); // 400
-
 console.log(SumSquares([1,2,3])); // 14 
 console.log(SumSquares([[1,2],3])); // 14
 console.log(SumSquares([[[[[[[[[1]]]]]]]]])); // 1
 console.log(SumSquares([10,[[10],10],[10]])); // 400
+
 function SumSquares(arr) {
     if(arr.length === 0) return 0;
     let total = 0;
@@ -128,13 +128,12 @@ function SumSquares(arr) {
 // console.log(replicate(3, 5)) // [5, 5, 5]
 // console.log(replicate(1, 69)) // [69]
 // console.log(replicate(-2, 6)) // []
-
 console.log(replicate(3, 5)) // [5, 5, 5]
 console.log(replicate(1, 69)) // [69]
 console.log(replicate(-2, 6)) // []
+
 function replicate(times, number) {
     if(times <= 0) return [];
 
-    return [number].concat(replicate(times -1, number));
+    return  [number].concat(replicate(times -1, number));
 }
-
